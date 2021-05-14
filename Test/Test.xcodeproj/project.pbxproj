@@ -16,6 +16,7 @@
 		34149F11264A6C8D000499B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34149F10264A6C8D000499B4 /* main.m */; };
 		34149F1F264A6F39000499B4 /* MPSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 34149F1E264A6F39000499B4 /* MPSwizzler.m */; };
 		34149F49264A7423000499B4 /* MPSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 34149F48264A7423000499B4 /* MPSwizzle.m */; };
+		34B1F73F264E176E007A2AAC /* Proxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B1F73E264E176E007A2AAC /* Proxy.m */; };
 		34BF5694264B9EE200A3171F /* RSSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BF5693264B9EE200A3171F /* RSSwizzle.m */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,8 @@
 		34149F1E264A6F39000499B4 /* MPSwizzler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSwizzler.m; sourceTree = "<group>"; };
 		34149F47264A7423000499B4 /* MPSwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPSwizzle.h; sourceTree = "<group>"; };
 		34149F48264A7423000499B4 /* MPSwizzle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSwizzle.m; sourceTree = "<group>"; };
+		34B1F73D264E176E007A2AAC /* Proxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Proxy.h; sourceTree = "<group>"; };
+		34B1F73E264E176E007A2AAC /* Proxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Proxy.m; sourceTree = "<group>"; };
 		34BF5692264B9EE200A3171F /* RSSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSwizzle.h; sourceTree = "<group>"; };
 		34BF5693264B9EE200A3171F /* RSSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSwizzle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +90,8 @@
 				34149F48264A7423000499B4 /* MPSwizzle.m */,
 				34149F1D264A6F38000499B4 /* MPSwizzler.h */,
 				34149F1E264A6F39000499B4 /* MPSwizzler.m */,
+				34B1F73D264E176E007A2AAC /* Proxy.h */,
+				34B1F73E264E176E007A2AAC /* Proxy.m */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 				34149F00264A6C8A000499B4 /* AppDelegate.m in Sources */,
 				34BF5694264B9EE200A3171F /* RSSwizzle.m in Sources */,
 				34149F11264A6C8D000499B4 /* main.m in Sources */,
+				34B1F73F264E176E007A2AAC /* Proxy.m in Sources */,
 				34149F1F264A6F39000499B4 /* MPSwizzler.m in Sources */,
 				34149F49264A7423000499B4 /* MPSwizzle.m in Sources */,
 				34149F03264A6C8A000499B4 /* SceneDelegate.m in Sources */,

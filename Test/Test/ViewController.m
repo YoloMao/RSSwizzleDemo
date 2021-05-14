@@ -10,6 +10,8 @@
 #import "MPSwizzle.h"
 #import "RSSwizzle.h"
 
+#import "Proxy.h"
+
 @interface Person : NSObject
 
 @end
@@ -54,6 +56,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //MPSwizzler、MPSwizzle(JRSwizzle)、RSSwizzle(新增mode RSSwizzleModeOnceInTheInheritanceChain)对比
+    [self hookTest];
+    
+    //proxy中间层设置Delegate情形模拟，注意proxy是否直接或动态实现了selector对应的imp
+    //realDelegateFromSelector中，新增对class_getInstanceMethod([proxy class], selector)的判断
+    [self proxyDelegateTest];
+}
+
+- (void)rsswizzleClass:(Class)cls selector:(SEL)sel key:(const void *)key {
+    RSSwizzleInstanceMethod(cls, sel, RSSWReturnType(void), RSSWArguments(), RSSWReplacement({
+        RSSWCallOriginal();
+        NSLog(@"%@ swizzle say hello", NSStringFromClass([self class]));
+    }), RSSwizzleModeOnceInTheInheritanceChain, key);
+}
+
+- (void)hookTest {
 //    //MPSwizzler
 //    [MPSwizzler swizzleSelector:@selector(sayHello) onClass:[Person class] withBlock:^(id obj, SEL sel) {
 //        NSLog(@"Person + swizzle say hello");
@@ -74,20 +92,24 @@
     
     Person *p = [Person new];
     [p sayHello];
-    
+
     NSLog(@"---------------------");
 
     Student *s = [Student new];
     [s sayHello];
-    
+
     NSLog(@"---------------------");
 }
 
-- (void)rsswizzleClass:(Class)cls selector:(SEL)sel key:(const void *)key {
-    RSSwizzleInstanceMethod(cls, sel, RSSWReturnType(void), RSSWArguments(), RSSWReplacement({
-        RSSWCallOriginal();
-        NSLog(@"%@ swizzle say hello", NSStringFromClass([self class]));
-    }), RSSwizzleModeOnceInTheInheritanceChain, key);
+- (void)proxyDelegateTest {
+    Proxy *px = [Proxy alloc];
+    id realDelegate = [MPSwizzler realDelegateFromSelector:@selector(sayHello) proxy:px];
+    
+    static const void *key = &key;
+    [self rsswizzleClass:[Person class] selector:@selector(sayHello) key:key];
+    [self rsswizzleClass:[realDelegate class] selector:@selector(sayHello) key:key];
+    
+    [px performSelector:@selector(sayHello)];
 }
 
 @end
