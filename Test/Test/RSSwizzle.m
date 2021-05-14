@@ -295,8 +295,9 @@ static NSMutableSet *swizzledClassesForKey(const void *key){
                     }
                 }
             }else if (mode == RSSwizzleModeOnceInTheInheritanceChain) {
-                //在当前继承链中，classToSwizzle调用selector对应imp实现时，保证swizzle实现只调用一次（比如埋点）
-                //特殊情况：如果子类和父类都hook了此函数，且子类调用super，swizzle实现会调用2次（无法避免）
+                //在当前继承链中，classToSwizzle调用selector对应imp实现时，无论hook的先后顺序，保证swizzle实现只调用一次（比如埋点）
+                //主要解决：同一继承链中，swizzle实现出现n次的情况
+                //特殊情况：当对父类和子类（重写了父类方法，并调用super实现）同时Hook，swizzle实现会调用2次（无法避免）
                 //而且，此mode违背了RSSwizzle设计初衷：[origin implementation应该在调用时获取，而不是在swizzling]
                 //要解决以上问题，可用动态子类的方式（参考KVO）来hook（最佳方案）
                 if ([swizzledClasses containsObject:classToSwizzle]) {

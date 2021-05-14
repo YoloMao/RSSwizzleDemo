@@ -1,10 +1,12 @@
 # RSSwizzleDemo
-基于RSSwizzle实现对象继承链中只Hook一次同一方法
+基于 RSSwizzle 实现对象继承链中只 Hook 一次同一方法
 
-在当前继承链中，classToSwizzle调用selector对应imp实现时，保证swizzle实现只调用一次（比如埋点）
+在当前继承链中，classToSwizzle 调用 selector 对应 imp 实现时，无论 hook 的先后顺序，保证 swizzle 实现只调用一次（比如埋点）
 
-特殊情况：如果子类和父类都hook了此函数，且子类调用super，swizzle实现会调用2次（无法避免）
+主要解决：同一继承链中，swizzle 实现出现 n 次的情况
 
-而且，此mode违背了RSSwizzle设计初衷：[origin implementation应该在调用时获取，而不是在swizzling]
+特殊情况：当对父类和子类（重写了父类方法，并调用 super 实现）同时 Hook，swizzle 实现会调用 2 次（无法避免）
 
-要解决以上问题，可用动态子类的方式（参考KVO）来hook（最佳方案）
+而且，此 mode 违背了 RSSwizzle 设计初衷：[origin implementation 应该在调用时获取，而不是在 swizzling]
+
+要解决以上问题，可用动态子类的方式（参考 KVO）来 hook（最佳方案）
