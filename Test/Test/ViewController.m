@@ -10,7 +10,9 @@
 #import "MPSwizzle.h"
 #import "RSSwizzle.h"
 
-#import "Proxy.h"
+#import "ProxyA.h"
+#import "ProxyB.h"
+#import "ProxyC.h"
 
 @interface Person : NSObject
 
@@ -57,7 +59,7 @@
     [super viewDidLoad];
     
     //MPSwizzler、MPSwizzle(JRSwizzle)、RSSwizzle(新增mode RSSwizzleModeOnceInTheInheritanceChain)对比
-    [self hookTest];
+//    [self hookTest];
     
     //proxy中间层设置Delegate情形模拟，注意proxy是否直接或动态实现了selector对应的imp
     //realDelegateFromSelector中，新增对class_getInstanceMethod([proxy class], selector)的判断
@@ -102,8 +104,18 @@
 }
 
 - (void)proxyDelegateTest {
-    Proxy *px = [Proxy alloc];
+    //1层代理转发
+//    Student *student = [[Student alloc] init];
+//    Proxy *px = [[Proxy alloc] initWithTarget:student];
+    
+    //多层代理转发
+    Student *student = [[Student alloc] init];
+    ProxyC *c = [[ProxyC alloc] initWithTarget:student];
+    ProxyB *b = [[ProxyB alloc] initWithTarget:c];
+    ProxyA *px = [[ProxyA alloc] initWithTarget:b];
+    
     id realDelegate = [MPSwizzler realDelegateFromSelector:@selector(sayHello) proxy:px];
+    NSLog(@"realDelegate class = %@", [realDelegate class]);
     
     static const void *key = &key;
     [self rsswizzleClass:[Person class] selector:@selector(sayHello) key:key];

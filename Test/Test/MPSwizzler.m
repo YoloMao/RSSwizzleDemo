@@ -150,17 +150,16 @@ static void (*mp_swizzledMethods[MAX_ARGS - MIN_ARGS + 1])() = {mp_swizzledMetho
         return nil;
     }
     
-    //避免proxy本身实现了该方法或通过resolveInstanceMethod添加了方法实现
-    Method method = class_getInstanceMethod([proxy class], selector);
-    if (method) {
-        return proxy;
-    }
-    
-    //如果使用了NSProxy或者快速转发,判断forwardingTargetForSelector是否实现
-    //默认forwardingTargetForSelector都有实现，只是返回为nil
     id realDelegate = proxy;
     id obj = nil;
     do {
+        //避免proxy本身实现了该方法或通过resolveInstanceMethod添加了方法实现
+        if (class_getInstanceMethod([realDelegate class], selector)) {
+            break;
+        }
+        
+        //如果使用了NSProxy或者快速转发,判断forwardingTargetForSelector是否实现
+        //默认forwardingTargetForSelector都有实现，只是返回为nil
         obj = ((id(*)(id, SEL, SEL))objc_msgSend)(realDelegate, @selector(forwardingTargetForSelector:), selector);
         if (!obj) break;
         realDelegate = obj;

@@ -16,7 +16,9 @@
 		34149F11264A6C8D000499B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34149F10264A6C8D000499B4 /* main.m */; };
 		34149F1F264A6F39000499B4 /* MPSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 34149F1E264A6F39000499B4 /* MPSwizzler.m */; };
 		34149F49264A7423000499B4 /* MPSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 34149F48264A7423000499B4 /* MPSwizzle.m */; };
-		34B1F73F264E176E007A2AAC /* Proxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B1F73E264E176E007A2AAC /* Proxy.m */; };
+		34B1F7F22653D087007A2AAC /* ProxyB.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B1F7F02653D087007A2AAC /* ProxyB.m */; };
+		34B1F7F32653D087007A2AAC /* ProxyA.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B1F7F12653D087007A2AAC /* ProxyA.m */; };
+		34B1F7F72653D1A0007A2AAC /* ProxyC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B1F7F62653D1A0007A2AAC /* ProxyC.m */; };
 		34BF5694264B9EE200A3171F /* RSSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BF5693264B9EE200A3171F /* RSSwizzle.m */; };
 /* End PBXBuildFile section */
 
@@ -37,8 +39,12 @@
 		34149F1E264A6F39000499B4 /* MPSwizzler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSwizzler.m; sourceTree = "<group>"; };
 		34149F47264A7423000499B4 /* MPSwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPSwizzle.h; sourceTree = "<group>"; };
 		34149F48264A7423000499B4 /* MPSwizzle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPSwizzle.m; sourceTree = "<group>"; };
-		34B1F73D264E176E007A2AAC /* Proxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Proxy.h; sourceTree = "<group>"; };
-		34B1F73E264E176E007A2AAC /* Proxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Proxy.m; sourceTree = "<group>"; };
+		34B1F7EE2653D087007A2AAC /* ProxyB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyB.h; sourceTree = "<group>"; };
+		34B1F7EF2653D087007A2AAC /* ProxyA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyA.h; sourceTree = "<group>"; };
+		34B1F7F02653D087007A2AAC /* ProxyB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProxyB.m; sourceTree = "<group>"; };
+		34B1F7F12653D087007A2AAC /* ProxyA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProxyA.m; sourceTree = "<group>"; };
+		34B1F7F52653D1A0007A2AAC /* ProxyC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProxyC.h; sourceTree = "<group>"; };
+		34B1F7F62653D1A0007A2AAC /* ProxyC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProxyC.m; sourceTree = "<group>"; };
 		34BF5692264B9EE200A3171F /* RSSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSwizzle.h; sourceTree = "<group>"; };
 		34BF5693264B9EE200A3171F /* RSSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSwizzle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,8 +96,12 @@
 				34149F48264A7423000499B4 /* MPSwizzle.m */,
 				34149F1D264A6F38000499B4 /* MPSwizzler.h */,
 				34149F1E264A6F39000499B4 /* MPSwizzler.m */,
-				34B1F73D264E176E007A2AAC /* Proxy.h */,
-				34B1F73E264E176E007A2AAC /* Proxy.m */,
+				34B1F7EF2653D087007A2AAC /* ProxyA.h */,
+				34B1F7F12653D087007A2AAC /* ProxyA.m */,
+				34B1F7EE2653D087007A2AAC /* ProxyB.h */,
+				34B1F7F02653D087007A2AAC /* ProxyB.m */,
+				34B1F7F52653D1A0007A2AAC /* ProxyC.h */,
+				34B1F7F62653D1A0007A2AAC /* ProxyC.m */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -165,11 +175,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B1F7F22653D087007A2AAC /* ProxyB.m in Sources */,
 				34149F06264A6C8A000499B4 /* ViewController.m in Sources */,
+				34B1F7F32653D087007A2AAC /* ProxyA.m in Sources */,
 				34149F00264A6C8A000499B4 /* AppDelegate.m in Sources */,
 				34BF5694264B9EE200A3171F /* RSSwizzle.m in Sources */,
 				34149F11264A6C8D000499B4 /* main.m in Sources */,
-				34B1F73F264E176E007A2AAC /* Proxy.m in Sources */,
+				34B1F7F72653D1A0007A2AAC /* ProxyC.m in Sources */,
 				34149F1F264A6F39000499B4 /* MPSwizzler.m in Sources */,
 				34149F49264A7423000499B4 /* MPSwizzle.m in Sources */,
 				34149F03264A6C8A000499B4 /* SceneDelegate.m in Sources */,
